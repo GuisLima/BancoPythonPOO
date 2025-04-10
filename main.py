@@ -35,16 +35,32 @@ class Conta:
         return cls(cliente, numero)
         
     def sacar(self, valor):
-        pass
+        excedeu_saldo = valor > self.saldo
+
+        if excedeu_saldo:
+            print("Operação falhou! Excedeu o limite de saques diários")
+        
+        elif self.saldo > 0:
+            self._saldo -= valor
+            print("Operação realizada com sucesso")
+            return True
+        
+        else:
+            print("Operação falhou! Valor inválido")
+
+        return False
+
 
     def depositar(self, valor):
         try:
             if valor > 0:
                 self._saldo += valor
                 print(f"Valor: {valor} depositado com sucesso!")
+                
             else:
                 print("Valor necessita ser positivo")
                 return False
+            
             return True
             
         except TypeError as exc:
