@@ -56,7 +56,7 @@ class Conta:
             if valor > 0:
                 self._saldo += valor
                 print(f"Valor: {valor} depositado com sucesso!")
-                
+
             else:
                 print("Valor necessita ser positivo")
                 return False
@@ -69,7 +69,15 @@ class Conta:
 
 
 class ContaCorrente(Conta):
-    pass
+    def __init__(self, cliente, numero):
+        super().__init__(cliente, numero)
+        self._limite = 500
+        self._limite_saques = 3
+
+    def sacar(self):
+        pass
+
+
 
 class Cliente:
     pass
