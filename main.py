@@ -68,7 +68,6 @@ class Conta:
                 print(f"\nOcorreu um erro! {exc}")
                 
 
-
 class ContaCorrente(Conta):
     def __init__(self, cliente, numero):
         super().__init__(cliente, numero)
@@ -134,7 +133,6 @@ class Transacao(ABC):
     @abstractmethod
     def registrar(self, conta):
         pass
-
 
 
 class Deposito(Transacao):
