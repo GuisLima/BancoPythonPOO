@@ -101,7 +101,7 @@ class ContaCorrente(Conta):
 
 class Cliente:
     def __init__(self, endereco):
-        self_endereco = endereco
+        self._endereco = endereco
         self._contas = []
 
     @property
@@ -112,10 +112,10 @@ class Cliente:
     def contas(self):
         return self._contas
 
-    def realizar_transcao(self, conta, transacao):
+    def realizar_transacao(self, conta, transacao):
         transacao.registrar(conta)
 
-    def adicionar_conta(conta):
+    def adicionar_conta(self, conta):
         self.contas.append(conta)
 
 class PessoaFisica(Cliente):
@@ -181,7 +181,4 @@ class Historico:
                 "data": datetime.now().strftime("%d-%m-%Y %H:%M:%s"),
             }
         )
-
-
-
 
