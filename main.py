@@ -90,11 +90,32 @@ class ContaCorrente(Conta):
             return super().sacar(valor)
 
         return False
-
-
+    
+    def __str__(self):
+        return f"""\
+            Agência:\t{self.agencia}
+            C/C:\t\t{self.numero}
+            Titular:\t{self.cliente.nome}
+        """
 
 class Cliente:
-    pass
+    def __init__(self, endereco):
+        self_endereco = endereco
+        self._contas = []
+
+    @property
+    def endereco(self):
+        return self._endereco
+    
+    @property
+    def contas(self):
+        return self._contas
+
+    def realizar_transcao(self, conta, transacao):
+        transacao.registrar(conta)
+
+    def adicionar_conta(conta):
+        self.contas.append(conta)
 
 class PessoaFisica(Cliente):
     pass
