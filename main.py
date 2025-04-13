@@ -38,15 +38,15 @@ class Conta:
         excedeu_saldo = valor > self.saldo
 
         if excedeu_saldo:
-            print("Operação falhou! Excedeu o limite de saques diários")
+            print("\nOperação falhou! Você não possui saldo o suficiente")
         
         elif self.saldo > 0:
             self._saldo -= valor
-            print("Operação realizada com sucesso")
+            print("\nOperação realizada com sucesso! Valor sacado: R$ {valor}")
             return True
         
         else:
-            print("Operação falhou! Valor inválido")
+            print("\nOperação falhou! Valor inválido")
 
         return False
 
@@ -55,16 +55,16 @@ class Conta:
         try:
             if valor > 0:
                 self._saldo += valor
-                print(f"Valor: {valor} depositado com sucesso!")
+                print(f"\nValor: {valor} depositado com sucesso!")
 
             else:
-                print("Valor necessita ser positivo")
+                print("\nValor necessita ser positivo")
                 return False
             
             return True
             
         except TypeError as exc:
-                print(f"Ocorreu um erro! {exc}")
+                print(f"\nOcorreu um erro! {exc}")
                 
 
 
@@ -74,8 +74,22 @@ class ContaCorrente(Conta):
         self._limite = 500
         self._limite_saques = 3
 
-    def sacar(self):
-        pass
+    def sacar(self, valor):
+        numero_saques = len([transacao for transacao in self.historico.transacoes if transcao["tipo" == Saque.__name__]])
+
+        excedeu_limite = valor > self._limite
+        excedeu_saques = numero_saques >= self._limite_saques
+
+        if excedeu_limite:
+            print("\nOperação falhou! Excedeu o limite de R$ 500,00 reais diários")
+        
+        elif excedeu_saques:
+            print("\nOperação falhou! VocÊ excedeu o limite de saques diários")
+        
+        else:
+            return super().sacar(valor)
+
+        return False
 
 
 
