@@ -118,7 +118,11 @@ class Cliente:
         self.contas.append(conta)
 
 class PessoaFisica(Cliente):
-    pass
+    def __init__(self, cpf, nome, data_nascimento, endereco):
+        super().__init__(endereco)
+        self._cpf = cpf
+        self._nome = nome
+        self._data_nascimento = data_nascimento
 
 # Interface
 class Transacao(ABC):
